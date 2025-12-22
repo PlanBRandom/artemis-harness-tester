@@ -1,0 +1,17 @@
+{
+  "harness_tester": {
+    "version": "1.0",
+    "device": "SparkFun Artemis ATP",
+    "tests": [
+      { "name": "SDI", "stim_pin": "P3.1", "sense_pins": ["P2.2"], "type": ["continuity","resistance","leakage"] },
+      { "name": "SDO", "stim_pin": "P3.2", "sense_pins": ["P2.4"], "type": ["continuity","resistance","leakage"] },
+      { "name": "SCK", "stim_pin": "P3.5", "sense_pins": ["P2.5"], "type": ["continuity","resistance","leakage"] },
+      { "name": "ADC_CS", "stim_pin": "P3.6", "sense_pins": ["P2.1"], "type": ["continuity","resistance","leakage"] },
+      { "name": "POT_CS", "stim_pin": "P3.7", "sense_pins": ["P2.3"], "type": ["continuity","resistance","leakage"] },
+      { "name": "+3V_FUSED", "stim_pin": "P3.3", "sense_pins": ["P1.1"], "type": ["continuity","resistance","zener"] },
+      { "name": "GND", "stim_pin": "P3.4", "sense_pins": ["P1.4","P1.5"], "type": ["continuity"] },
+      { "name": "-3.3V", "stim_pin": "P1.2", "sense_pins": [], "type": ["isolation"] },
+      { "name": "+ADJ", "stim_pin": "P1.3", "sense_pins": [], "type": ["isolation"] }
+    ]
+  }
+}
