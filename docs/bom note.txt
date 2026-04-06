@@ -1,0 +1,78 @@
+ARTEMIS HARNESS TESTER - KICAD NETLIST STUB (CHANNELS + CAT5)
+==========================================================
+
+Net Naming Convention
+---------------------
+- CH0..CH20: Logical channel nets between Artemis and series resistors.
+- J1_x: Harness connector pins.
+- CAT5_A_x, CAT5_B_x, CAT5_C_x: Individual CAT5 conductors.
+
+Example Nets
+------------
+(net "CH0")
+(net "CH1")
+...
+(net "CH20")
+
+(net "J1_1")
+(net "J1_2")
+...
+(net "J1_21")
+
+(net "CAT5_A_WO")   ; Cable A, White/Orange
+(net "CAT5_A_O")    ; Cable A, Orange
+(net "CAT5_A_WG")   ; Cable A, White/Green
+(net "CAT5_A_G")    ; Cable A, Green
+(net "CAT5_A_WB")   ; Cable A, White/Blue
+(net "CAT5_A_B")    ; Cable A, Blue
+(net "CAT5_A_WBr")  ; Cable A, White/Brown
+(net "CAT5_A_Br")   ; Cable A, Brown
+
+(similar for CAT5_B_* and CAT5_C_*)
+
+Logical Connections (Conceptual)
+--------------------------------
+CH0   ↔ RDRV0 ↔ J1_1 ↔ CAT5_A_WO
+CH1   ↔ RDRV1 ↔ J1_2 ↔ CAT5_A_O
+CH2   ↔ RDRV2 ↔ J1_3 ↔ CAT5_A_WG
+CH3   ↔ RDRV3 ↔ J1_4 ↔ CAT5_A_G
+CH4   ↔ RDRV4 ↔ J1_5 ↔ CAT5_A_WB
+CH5   ↔ RDRV5 ↔ J1_6 ↔ CAT5_A_B
+CH6   ↔ RDRV6 ↔ J1_7 ↔ CAT5_A_WBr
+CH7   ↔ RDRV7 ↔ J1_8 ↔ CAT5_A_Br
+
+CH8   ↔ RDRV8  ↔ J1_9  ↔ CAT5_B_WO
+CH9   ↔ RDRV9  ↔ J1_10 ↔ CAT5_B_O
+CH10  ↔ RDRV10 ↔ J1_11 ↔ CAT5_B_WG
+CH11  ↔ RDRV11 ↔ J1_12 ↔ CAT5_B_G
+CH12  ↔ RDRV12 ↔ J1_13 ↔ CAT5_B_WB
+CH13  ↔ RDRV13 ↔ J1_14 ↔ CAT5_B_B
+CH14  ↔ RDRV14 ↔ J1_15 ↔ CAT5_B_WBr
+CH15  ↔ RDRV15 ↔ J1_16 ↔ CAT5_B_Br
+
+CH16  ↔ RDRV16 ↔ J1_17 ↔ CAT5_C_WO
+CH17  ↔ RDRV17 ↔ J1_18 ↔ CAT5_C_O
+CH18  ↔ RDRV18 ↔ J1_19 ↔ CAT5_C_WG
+CH19  ↔ RDRV19 ↔ J1_20 ↔ CAT5_C_G
+CH20  ↔ RDRV20 ↔ J1_21 ↔ CAT5_C_WB
+
+Bill of Materials Note
+----------------------
+- RDRV0–RDRV20:
+  - Quantity: 21
+  - Description: Series resistor, 1,000 ohms, 1% tolerance, 1/4 W (or as per design)
+  - Purpose: Channel isolation and current limiting between Artemis pins and harness.
+- RREF:
+  - Quantity: 1
+  - Description: Precision reference resistor, 1,000 ohms, 0.1–0.5% tolerance recommended.
+  - Purpose: Defines measurement current and accuracy for resistance measurements.
+- LED_IND:
+  - Quantity: 1
+  - Description: Indicator LED, any color, with matching current-limiting resistor.
+  - Purpose: Visual indication of measurement activity on the resistance drive signal.
+- CAT5 Cables:
+  - Quantity: 3
+  - Description: CAT5 or CAT5e cable, 4 twisted pairs, TIA-568B color code.
+  - Purpose: Harness wiring for channels CH0–CH20 and spare conductors.
+
+This stub can be adapted into a full KiCad schematic/netlist by assigning these net names to symbols and connectors in the project.

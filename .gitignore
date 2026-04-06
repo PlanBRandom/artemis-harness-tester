@@ -1,18 +1,12 @@
-# Arduino
-*.hex
+# Build outputs
+build/
 *.elf
 *.bin
+*.hex
 *.map
-
-# Python
-__pycache__/
-*.py[cod]
-*$py.class
-*.so
-.Python
-env/
-venv/
-*.egg-info/
+*.eep
+*.d
+*.o
 
 # IDE
 .vscode/
@@ -21,11 +15,33 @@ venv/
 *.swo
 *~
 
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.egg-info/
+.env
+.venv/
+venv/
+
+# Firmware
+.pio/
+.clang_complete
+.gcc-flags.json
+
+# Test outputs & exports
+*.csv
+test_results/
+harness_matrix_*.csv
+
 # OS
 .DS_Store
 Thumbs.db
 
-# Test outputs
-*.json.bak
-test_results/
-logs/
+# Logs
+*.log
+
+# KiCad backups
+*.kicad_pcb-bak
+*.sch-bak
+*-cache.lib

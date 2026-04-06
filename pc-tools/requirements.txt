@@ -1,0 +1,2 @@
+pyserial
+tkinter>=3.5

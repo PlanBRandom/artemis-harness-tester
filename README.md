@@ -1,87 +1,127 @@
 # Artemis Harness Tester
 
-Production-grade cable harness tester using SparkFun Artemis ATP for P3/P1/P2 assemblies with automated continuity, resistance, leakage, and zener tests.
+Production-grade 21-channel cable harness tester for SparkFun Artemis ATP fixtures.
 
-## 🚀 Quick Start
+## Features
 
-1. **Hardware Setup**
-   - Flash `firmware/harness_tester.ino` to SparkFun Artemis ATP
-   - Connect resistor arrays per schematic in `docs/harness_tester.md`
-   - Insert harness into test jig
+- Auto-generated 21x21 connectivity matrix from a simple netlist
+- Open, short, and crosstalk detection
+- Per-channel resistance measurement with JSON output
+- Profile-based limits for automated pass/fail checks
+- Python CLI, live dashboard, and CSV viewer tools
 
-2. **Run Test**
-   - Open serial monitor at 115200 baud
-   - Read JSON report output
+## Quick Start
 
-3. **Analyze Results**
-   ```bash
-   python tools/parse_report.py test_output.json
-   ```
+### Firmware
 
-## 📁 Repository Structure
+1. Open `firmware/harness_tester.ino` in Arduino IDE, or build from `platformio.ini`.
+2. Install SparkFun Artemis board support.
+3. Flash the firmware to the Artemis ATP.
+4. Open a serial terminal at `115200` baud.
 
-```
-├── firmware/
-│   └── harness_tester.ino          # Arduino firmware for Artemis ATP
-├── docs/
-│   └── harness_tester.md           # Complete documentation
-├── test_definitions/
-│   └── harness_test.json           # Test configuration
-├── tools/
-│   └── parse_report.py             # Python analysis tool
-└── README.md                        # This file
+### PC tools
+
+```bash
+cd pc-tools
+pip install -r requirements.txt
+python tester_cli.py --port COM5 selftest
 ```
 
-## 🔧 Features
+## Repository Layout
 
-- **Continuity Testing**: Detects open circuits and broken conductors
-- **Resistance Measurement**: Identifies weak solder joints (GOOD/MARGINAL/BAD)
-- **Leakage Detection**: Finds flux contamination and solder whiskers
-- **Zener Characterization**: Validates protection diode D3
-- **JSON Reports**: Machine-readable test results
+```text
+firmware/      Firmware modules and entry points
+pc-tools/      Python tools for CLI, dashboard, and CSV viewing
+hardware/      KiCad design files, diagrams, and notes
+profiles/      Example profile data
+docs/          Assembly and validation notes
+tests/         Basic test coverage
+```
 
-## 📊 Test Coverage
+## Core Model
 
-**P3 Connector (7-pin)**
-- SDI, SDO, SCK, ADC_CS, POT_CS
-- +3.3V_FUSED (with Zener test)
-- GND
+The tester is built around two source files:
 
-**P2 Connector (5-pin)**
-- ADC_CS, SDI, POT_CS, SDO, SCK
+- `firmware/channels.h`: channel index to physical pin mapping
+- `firmware/nets.h`: channel index to expected net assignment
 
-**P1 Connector (5-pin)**
-- +3.3V_FUSED, -3.3V, +ADJ
-- GND (×2)
+The firmware derives the expected matrix from `nets.h`, measures the actual matrix from hardware, then compares both to flag opens, shorts, and unexpected couplings.
 
-## 🛠️ Hardware Requirements
+## PC Tools
 
-- SparkFun Artemis ATP
-- Bourns resistor arrays:
-  - CAY10-472J8LF (8× 4.7kΩ) × 3
-  - CAY16-473J4LF (4× 47kΩ) × 1
-- Custom PCB with P3/P2/P1 connectors
-- 3D-printed test jig (optional)
+- `pc-tools/tester_cli.py`: command-line access to `MEASURE`, `MATRIX`, `PROFILE`, `SELFTEST`, and `CALIBRATE`
+- `pc-tools/live_dashboard.py`: live serial console with matrix visualization
+- `pc-tools/harness_viewer.py`: capture CSV matrix output from the serial stream
+- `pc-tools/harness_gui.py`: simple CSV viewer
+- `pc-tools/harness_web.py`: lightweight upload-and-view web UI
 
-## 📖 Documentation
+## Hardware Assets
 
-See `docs/harness_tester.md` for complete documentation including:
-- Pin mappings
-- Firmware architecture
-- Test methodology
-- Hardware schematics
-- Jig design notes
-- Advanced engineering details
+- KiCad schematic: `hardware/kicad/artemis_harness_tester.kicad_sch`
+- KiCad PCB: `hardware/kicad/artemis_harness_tester.kicad_pcb`
+- Wiring diagram: `hardware/diagrams/ascii_wiring_diagram.txt`
+- Validation notes: `WIRECHECK.md`
 
-## 🤝 Contributing
+## Development Notes
 
-This is a production tool for specific cable assemblies. Fork and adapt for your own harness testing needs!
+- `AGENT.md` describes the safe extension boundaries for firmware and tools.
+- `ARCHITECTURE.md` explains the modular firmware structure and command protocol.
+- `QUICKSTART.md` covers bring-up, serial commands, and troubleshooting.
 
-## 📜 License
+## License
 
-MIT License - See LICENSE file for details
+MIT. See `LICENSE`.
+
+MIT License (see LICENSE file)
 
 ---
 
-**Author:** Brandon + GitHub Copilot  
-**Status:** Production Ready 🟢
+## 🤖 AI Coding Agent Notes
+
+This repo is structured to be AI-friendly:
+- Modular headers
+- Clear separation of concerns
+- Predictable naming
+- Explicit task list (see TASKS.md)
+- Roadmap for future expansion (see ROADMAP.md)
+
+Agents may safely:
+- Add new test modules
+- Extend PC tools
+- Add GUIs or dashboards
+- Add calibration routines
+- Add new harness profiles
+
+Agents should NOT:
+- Modify `channels.h` or `nets.h` without explicit instruction
+- Break the matrix API
+- Remove CSV/JSON markers
+
+---
+
+## 📄 License
+
+MIT License (see LICENSE file)
+
+---
+
+## 🤖 AI Coding Agent Notes
+
+This repo is structured to be AI-friendly:
+- Modular headers
+- Clear separation of concerns
+- Predictable naming
+- Explicit task list (see TASKS.md)
+- Roadmap for future expansion (see ROADMAP.md)
+
+Agents may safely:
+- Add new test modules
+- Extend PC tools
+- Add GUIs or dashboards
+- Add calibration routines
+- Add new harness profiles
+
+Agents should NOT:
+- Modify `channels.h` or `nets.h` without explicit instruction
+- Break the matrix API
+- Remove CSV/JSON markers

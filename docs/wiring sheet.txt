@@ -1,0 +1,81 @@
+ARTEMIS HARNESS TESTER - WIRING SHEET
+==================================
+
+Overview
+--------
+This document defines the wiring between:
+- Three CAT5 cables (A, B, C)
+- The 21-position harness terminal block J1
+- The Artemis ATP pins (PIN2–PIN22)
+
+CAT5 Color Code (TIA-568B)
+--------------------------
+Pair 1: White/Orange, Orange
+Pair 2: White/Green, Green
+Pair 3: White/Blue, Blue
+Pair 4: White/Brown, Brown
+
+CAT5 Cable A (Channels 0–7)
+---------------------------
+J1-1  ← CH0  ← White/Orange (Cable A)
+J1-2  ← CH1  ← Orange       (Cable A)
+J1-3  ← CH2  ← White/Green  (Cable A)
+J1-4  ← CH3  ← Green        (Cable A)
+J1-5  ← CH4  ← White/Blue   (Cable A)
+J1-6  ← CH5  ← Blue         (Cable A)
+J1-7  ← CH6  ← White/Brown  (Cable A)
+J1-8  ← CH7  ← Brown        (Cable A)
+
+CAT5 Cable B (Channels 8–15)
+----------------------------
+J1-9   ← CH8   ← White/Orange (Cable B)
+J1-10  ← CH9   ← Orange       (Cable B)
+J1-11  ← CH10  ← White/Green  (Cable B)
+J1-12  ← CH11  ← Green        (Cable B)
+J1-13  ← CH12  ← White/Blue   (Cable B)
+J1-14  ← CH13  ← Blue         (Cable B)
+J1-15  ← CH14  ← White/Brown  (Cable B)
+J1-16  ← CH15  ← Brown        (Cable B)
+
+CAT5 Cable C (Channels 16–20 + Spares)
+--------------------------------------
+J1-17  ← CH16  ← White/Orange (Cable C)
+J1-18  ← CH17  ← Orange       (Cable C)
+J1-19  ← CH18  ← White/Green  (Cable C)
+J1-20  ← CH19  ← Green        (Cable C)
+J1-21  ← CH20  ← White/Blue   (Cable C)
+
+Spare conductors (Cable C):
+- SPARE 1: Blue
+- SPARE 2: White/Brown
+- SPARE 3: Brown
+
+Artemis ATP Pin Mapping
+-----------------------
+CH0   → Artemis PIN2
+CH1   → Artemis PIN3
+CH2   → Artemis PIN4
+CH3   → Artemis PIN5
+CH4   → Artemis PIN6
+CH5   → Artemis PIN7
+CH6   → Artemis PIN8
+CH7   → Artemis PIN9
+CH8   → Artemis PIN10
+CH9   → Artemis PIN11
+CH10  → Artemis PIN12
+CH11  → Artemis PIN13
+CH12  → Artemis PIN14
+CH13  → Artemis PIN15
+CH14  → Artemis PIN16
+CH15  → Artemis PIN17
+CH16  → Artemis PIN18
+CH17  → Artemis PIN19
+CH18  → Artemis PIN20
+CH19  → Artemis PIN21
+CH20  → Artemis PIN22
+
+Notes
+-----
+- All harness returns connect to system ground on the tester PCB.
+- Series resistors (RDRV0–RDRV20, 1 kΩ each) sit between Artemis pins and J1.
+- Refer to BOM for exact resistor part numbers and tolerance.

@@ -1,0 +1,76 @@
+ARTEMIS HARNESS TESTER - TECHNICIAN ASSEMBLY CHECKLIST
+===================================================
+
+Harness Cables
+--------------
+[ ] Prepare three CAT5 cables (A, B, C), TIA-568B color order.
+[ ] Label each cable at both ends:
+    - Cable A
+    - Cable B
+    - Cable C
+
+Cable A → J1 (Channels 0–7)
+---------------------------
+[ ] J1-1 connected to White/Orange (Cable A) → CH0
+[ ] J1-2 connected to Orange       (Cable A) → CH1
+[ ] J1-3 connected to White/Green  (Cable A) → CH2
+[ ] J1-4 connected to Green        (Cable A) → CH3
+[ ] J1-5 connected to White/Blue   (Cable A) → CH4
+[ ] J1-6 connected to Blue         (Cable A) → CH5
+[ ] J1-7 connected to White/Brown  (Cable A) → CH6
+[ ] J1-8 connected to Brown        (Cable A) → CH7
+
+Cable B → J1 (Channels 8–15)
+----------------------------
+[ ] J1-9   connected to White/Orange (Cable B) → CH8
+[ ] J1-10  connected to Orange       (Cable B) → CH9
+[ ] J1-11  connected to White/Green  (Cable B) → CH10
+[ ] J1-12  connected to Green        (Cable B) → CH11
+[ ] J1-13  connected to White/Blue   (Cable B) → CH12
+[ ] J1-14  connected to Blue         (Cable B) → CH13
+[ ] J1-15  connected to White/Brown  (Cable B) → CH14
+[ ] J1-16  connected to Brown        (Cable B) → CH15
+
+Cable C → J1 (Channels 16–20)
+-----------------------------
+[ ] J1-17  connected to White/Orange (Cable C) → CH16
+[ ] J1-18  connected to Orange       (Cable C) → CH17
+[ ] J1-19  connected to White/Green  (Cable C) → CH18
+[ ] J1-20  connected to Green        (Cable C) → CH19
+[ ] J1-21  connected to White/Blue   (Cable C) → CH20
+
+Spare Conductors (Cable C)
+--------------------------
+[ ] Blue        (Cable C) labeled "SPARE 1"
+[ ] White/Brown (Cable C) labeled "SPARE 2"
+[ ] Brown       (Cable C) labeled "SPARE 3"
+
+Artemis Connections
+-------------------
+[ ] CH0  wired to Artemis PIN2 (through RDRV0, 1 kΩ)
+[ ] CH1  wired to Artemis PIN3 (through RDRV1, 1 kΩ)
+[ ] CH2  wired to Artemis PIN4 (through RDRV2, 1 kΩ)
+[ ] CH3  wired to Artemis PIN5 (through RDRV3, 1 kΩ)
+[ ] CH4  wired to Artemis PIN6 (through RDRV4, 1 kΩ)
+[ ] CH5  wired to Artemis PIN7 (through RDRV5, 1 kΩ)
+[ ] CH6  wired to Artemis PIN8 (through RDRV6, 1 kΩ)
+[ ] CH7  wired to Artemis PIN9 (through RDRV7, 1 kΩ)
+[ ] CH8  wired to Artemis PIN10 (through RDRV8, 1 kΩ)
+[ ] CH9  wired to Artemis PIN11 (through RDRV9, 1 kΩ)
+[ ] CH10 wired to Artemis PIN12 (through RDRV10, 1 kΩ)
+[ ] CH11 wired to Artemis PIN13 (through RDRV11, 1 kΩ)
+[ ] CH12 wired to Artemis PIN14 (through RDRV12, 1 kΩ)
+[ ] CH13 wired to Artemis PIN15 (through RDRV13, 1 kΩ)
+[ ] CH14 wired to Artemis PIN16 (through RDRV14, 1 kΩ)
+[ ] CH15 wired to Artemis PIN17 (through RDRV15, 1 kΩ)
+[ ] CH16 wired to Artemis PIN18 (through RDRV16, 1 kΩ)
+[ ] CH17 wired to Artemis PIN19 (through RDRV17, 1 kΩ)
+[ ] CH18 wired to Artemis PIN20 (through RDRV18, 1 kΩ)
+[ ] CH19 wired to Artemis PIN21 (through RDRV19, 1 kΩ)
+[ ] CH20 wired to Artemis PIN22 (through RDRV20, 1 kΩ)
+
+Ground and Power
+----------------
+[ ] Harness return conductors tied to tester PCB ground.
+[ ] Tester PCB ground tied to Artemis ground.
+[ ] Reference resistor and LED wired per schematic and BOM.

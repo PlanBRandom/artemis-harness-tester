@@ -1,0 +1,74 @@
+ARTEMIS HARNESS TESTER - CONTINUITY TEST PLAN
+==========================================
+
+Objective
+---------
+Verify that each channel (CH0–CH20) is correctly wired:
+- From Artemis pin
+- Through series resistor
+- To the correct J1 terminal
+- With no shorts between channels
+
+Equipment
+---------
+- Digital multimeter with continuity / resistance mode
+- Access to J1 terminal block
+- Access to Artemis pins or test pads for CH0–CH20
+
+Step 1 – Visual Inspection
+--------------------------
+[ ] Confirm all CAT5 terminations are fully seated and strain-relieved.
+[ ] Confirm J1 labeling matches CH0–CH20 mapping.
+[ ] Confirm Artemis pins are wired to the correct series resistors (RDRV0–RDRV20).
+
+Step 2 – Per-Channel Continuity (Low-Ohms Check)
+------------------------------------------------
+For each channel N (0–20):
+
+1. Place one probe on the Artemis pin for CHN.
+2. Place the other probe on the corresponding J1 terminal.
+3. Expected reading:
+   - Approximately 1,000 ohms (series resistor RDRVN).
+4. Record result as PASS if resistance is within tolerance (see BOM).
+
+Example:
+- CH0: Artemis PIN2 ↔ J1-1 ≈ 1,000 ohms → PASS
+- CH1: Artemis PIN3 ↔ J1-2 ≈ 1,000 ohms → PASS
+...
+- CH20: Artemis PIN22 ↔ J1-21 ≈ 1,000 ohms → PASS
+
+Step 3 – Short-Circuit Check Between Channels
+---------------------------------------------
+1. Leave one probe on J1-1 (CH0).
+2. Sweep the other probe across J1-2 through J1-21.
+3. Expected reading:
+   - Open circuit (no continuity) between CH0 and all other channels.
+4. Repeat for:
+   - J1-2 vs J1-3..J1-21
+   - J1-3 vs J1-4..J1-21
+   - Continue until all pairs are checked.
+
+Any low resistance between channels indicates a wiring short → FAIL.
+
+Step 4 – Ground Isolation Check
+-------------------------------
+1. Place one probe on tester PCB ground.
+2. Sweep the other probe across J1-1 through J1-21.
+3. Expected reading:
+   - Open circuit (no direct short to ground) on all channels.
+   - Exception: if a specific channel is intentionally tied to ground in the harness under test (not in the bare harness cable).
+
+Step 5 – Functional Sanity Check (Optional)
+-------------------------------------------
+Once firmware is loaded:
+1. Connect the harness to J1.
+2. Run the SELFTEST or MEASURE command from the PC CLI.
+3. Confirm:
+   - No unexpected shorts reported.
+   - Open channels behave as expected.
+   - Known test harnesses produce repeatable results.
+
+Notes
+-----
+- Refer to the Bill of Materials (BOM) for exact resistor values and tolerances.
+- If any channel fails continuity or isolation, rework the harness before use.
